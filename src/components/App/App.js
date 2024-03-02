@@ -11,32 +11,47 @@ function App() {
   const [boys, setBoys] = useState(
     [
       {
-        name: 'Masoud',
+        id: 1,
+        name: 'masoud',
         age: 21,
         phone: '0123456789', 
         address: 'Alexandria, Egypt',
-        email: 'Masoud@gmail.com'
+        email: 'Masoud@gmail.com',
+        type:'boy'
       },
       {
-        name: 'Ahmed',
+        id: 2,
+        name: 'ahmed',
         age: 25,
         phone: '0123456789', 
         address: 'Cairo, Egypt',
-        email: 'email.com'
+        email: 'email.com',
+        type:'boy'
       },
       {
-        name: 'Ali',
+        id: 3,
+        name: 'ali',
         age: 30,
         phone: '0123456789', 
         address: 'Giza, Egypt',
-        email: 'email.com'
-      }
+        email: 'email.com',
+        type:'boy'
+      },
+      {
+        id: 4,
+        name: 'nagwa',
+        age: 20,
+        phone: '0123456789', 
+        address: 'Mansoura, Egypt',
+        email: 'email.com',
+        type: 'girl'
+      } 
     ]
   );
 
-  const deleteCard = (event, index) => {
+  const deleteCard = (event, id) => {
     setBoys((prevBoys) => {
-      return prevBoys.filter((card, indexCard) => indexCard !== index);
+      return prevBoys.filter((card) => card.id !== id);
     });
   }
 
@@ -61,7 +76,7 @@ function App() {
         
           <Filter fHandler={filterHandler} />
         
-        <Card namesList={boysHandler()} color='skyblue' deleteCard={deleteCard}/>
+        <Card namesList={boysHandler()}s deleteCard={deleteCard}/>
       </div>
     </div>
   );
