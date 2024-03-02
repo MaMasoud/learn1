@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import './App.css';
 import Card from '../Card/Card';
+import Filter from '../Filter/Filter';
 
 
 function App() {
-
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
+  const [filter, setFilter] = useState('');
   const [boys, setBoys] = useState(
     [
       {
@@ -38,6 +39,17 @@ function App() {
       return prevBoys.filter((card, indexCard) => indexCard !== index);
     });
   }
+
+  const filterHandler = (name) => {
+    setFilter(name);
+  }
+
+  const boysHandler = () => {
+    if (filter !== '') {
+      return boys.filter((el) => el.name.includes(filter));
+    }
+    return boys
+  }
     
   return (
      
@@ -46,7 +58,10 @@ function App() {
       <button onClick={() => setShow(!show)}>{show ? 'Hide' : 'Show'} Names</button>
 
       <div className={show ? 'show' : 'hide'}>
-        <Card namesList={boys} color='skyblue' deleteCard={deleteCard}/>
+        
+          <Filter fHandler={filterHandler} />
+        
+        <Card namesList={boysHandler()} color='skyblue' deleteCard={deleteCard}/>
       </div>
     </div>
   );

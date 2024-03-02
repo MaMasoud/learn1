@@ -14,7 +14,7 @@ export default function Card({namesList, color, deleteCard}) {
           </div>
         );
       });
-  return (
+  return ( 
     <>
       {cards}
     </>
