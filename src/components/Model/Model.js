@@ -5,8 +5,8 @@ import styles from './Model.module.css'
 
 
 
-const BackDrop = () => {
-  return <div className={styles.backDrop}></div>
+const BackDrop = ({closeModel}) => {
+  return <div className={styles.backDrop} onClick={closeModel}></div>
 }
 
 const Overlay = () => {
@@ -14,10 +14,10 @@ const Overlay = () => {
 }
 
 
-export default function Model() {
-    return ReactDOM.createPortal(
+export default function Model({show, closeModel}) {
+    return show && ReactDOM.createPortal(
         <Fragment>
-            <BackDrop />
+            <BackDrop closeModel={closeModel} />
             <Overlay />
         </Fragment>,
         document.getElementById('modal')

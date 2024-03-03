@@ -9,6 +9,7 @@ import Model from '../components/Model/Model';
 function App() {
   const [show, setShow] = useState(true);
   const [filter, setFilter] = useState('');
+  const [model, setModel] = useState(false);
   const [boys, setBoys] = useState(
     [
       {
@@ -71,9 +72,10 @@ function App() {
      
     <div className='main-container'>
     
-      <Model />
+      <Model show={model} closeModel={() => setModel(false)}/>
 
-      <button onClick={() => setShow(!show)}>{show ? 'Hide' : 'Show'} Names</button>
+      <button className='botton' onClick={() => setShow(!show)}>{show ? 'Hide' : 'Show' } Names</button>
+      <button className='botton' onClick={() => setModel(true)} >show model</button>
 
       <div className={show ? 'show' : 'hide'}>
         
