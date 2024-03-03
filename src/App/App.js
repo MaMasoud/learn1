@@ -1,8 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 import './App.css';
-import Card from '../Card/Card';
-import Filter from '../Filter/Filter';
+import Filter from '../components/Filter/Filter';
+import CardList from '../components/CardList/CardList';
+import Model from '../components/Model/Model';
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
 
   const deleteCard = (event, id) => {
     setBoys((prevBoys) => {
-      return prevBoys.filter((card) => card.id !== id);
+      return prevBoys.filter((CardList) => CardList.id !== id);
     });
   }
 
@@ -69,6 +70,8 @@ function App() {
   return (
      
     <div className='main-container'>
+    
+      <Model />
 
       <button onClick={() => setShow(!show)}>{show ? 'Hide' : 'Show'} Names</button>
 
@@ -76,7 +79,7 @@ function App() {
         
           <Filter fHandler={filterHandler} />
         
-        <Card namesList={boysHandler()}s deleteCard={deleteCard}/>
+        <CardList namesList={boysHandler()} deleteCard={deleteCard}/>
       </div>
     </div>
   );
